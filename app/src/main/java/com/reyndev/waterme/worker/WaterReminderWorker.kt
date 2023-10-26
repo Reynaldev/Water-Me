@@ -27,7 +27,7 @@ class WaterReminderWorker(
         }
 
         val pendingIntent: PendingIntent = PendingIntent
-            .getActivity(applicationContext, 0, intent, 0)
+            .getActivity(applicationContext, 0, intent, PendingIntent.FLAG_IMMUTABLE)
 
         val plantName = inputData.getString(nameKey)
 

@@ -2,7 +2,6 @@ package com.reyndev.waterme.ui
 
 import android.app.AlertDialog
 import android.app.Dialog
-import android.icu.util.TimeUnit
 import android.os.Build
 import android.os.Bundle
 import androidx.annotation.RequiresApi
@@ -11,6 +10,7 @@ import androidx.fragment.app.viewModels
 import com.reyndev.waterme.R
 import com.reyndev.waterme.viewmodel.PlantViewModel
 import com.reyndev.waterme.viewmodel.PlantViewModelFactory
+import java.util.concurrent.TimeUnit
 
 class ReminderDialogFragment(private val plantName: String) : DialogFragment() {
     private val viewModel: PlantViewModel by viewModels {
@@ -26,16 +26,16 @@ class ReminderDialogFragment(private val plantName: String) : DialogFragment() {
                     when (position) {
                         0 ->
                             viewModel
-                                .scheduleReminder(5, TimeUnit.SECOND, plantName)
+                                .scheduleReminder(5, TimeUnit.SECONDS, plantName)
                         1 ->
                             viewModel
-                                .scheduleReminder(1, TimeUnit.DAY, plantName)
+                                .scheduleReminder(1, TimeUnit.DAYS, plantName)
                         2 ->
                             viewModel
-                                .scheduleReminder(7, TimeUnit.DAY, plantName)
+                                .scheduleReminder(7, TimeUnit.DAYS, plantName)
                         3 ->
                             viewModel
-                                .scheduleReminder(30, TimeUnit.DAY, plantName)
+                                .scheduleReminder(30, TimeUnit.DAYS, plantName)
                     }
                 }
             builder.create()
