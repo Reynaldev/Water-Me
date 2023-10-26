@@ -5,6 +5,7 @@ import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.work.Data
+import androidx.work.ExistingWorkPolicy
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import androidx.work.WorkManagerInitializer
@@ -37,7 +38,8 @@ class PlantViewModel(private val application: Application) : ViewModel() {
             .build()
 
         // TODO: Enqueue the request as a unique work request
-        WorkManager.getInstance(application).enqueue(reminder)
+        WorkManager.getInstance(application)
+            .enqueueUniqueWork(plantName, ExistingWorkPolicy.REPLACE, reminder)
     }
 }
 
